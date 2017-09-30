@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var label1: UILabel!
@@ -20,6 +21,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var upButtonTop: UIButton!
     
     @IBOutlet weak var label4: UILabel!
+    var indexOfSelectedQuestion: Int = 0
+    var randomNumArray = [Int]()
+    
+    let rounds = 6
+    let contentPerRound = 4
+    
+    var contentForRoundArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +40,46 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func randomNumberFunction() -> Int {
+        
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: listOfHistoricalYears.count)
+        
+        //setup a random Num array to keep track of previous generated random numbers if they have not already been selected then the question is displaed
+        //if they have been selected then the method is called again.
+        
+        if !randomNumArray.contains(indexOfSelectedQuestion) {
+            
+            randomNumArray.append(indexOfSelectedQuestion)
+            return indexOfSelectedQuestion
+        } else {
+            return randomNumberFunction()
+        }
+        
+    }
+    
     func displayContent() {
+        let randomNumber1 = randomNumberFunction()
+        let randomNumber2 = randomNumberFunction()
+        let randomNumber3 = randomNumberFunction()
+        let randomNumber4 = randomNumberFunction()
+
+
+
         
+        print("\(randomNumber1)")
+        print("\(randomNumber2)")
+
+        print("\(randomNumber3)")
+
+        print("\(randomNumber4)")
         
-        label1.text = listOfHistoricalYears[0]
-        label2.text = listOfHistoricalYears[1]
-        label3.text = listOfHistoricalYears[2]
-        label4.text = listOfHistoricalYears[3]
+        print("\(randomNumArray)")
+
+        
+        label1.text = listOfHistoricalYears[randomNumber1]
+        label2.text = listOfHistoricalYears[randomNumber2]
+        label3.text = listOfHistoricalYears[randomNumber3]
+        label4.text = listOfHistoricalYears[randomNumber4]
     }
     
     @IBAction func moveText(_ sender: UIButton) {
@@ -83,6 +124,15 @@ class ViewController: UIViewController {
     
     }
     
+    func checkEventsOrderedCorrectly() -> Bool {
+        //if events are ordered correctly return true
+        if (label1.text < label2.text && label2.text < label3.text && label3.text < label4.text) {
+            return true
+        } else {
+            return false
+        }
+        
+    }
     
 
     var listOfHistoricalEvents: [String] =
