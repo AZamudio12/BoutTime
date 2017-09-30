@@ -33,11 +33,57 @@ class ViewController: UIViewController {
     }
     
     func displayContent() {
+        
+        
         label1.text = listOfHistoricalYears[0]
         label2.text = listOfHistoricalYears[1]
         label3.text = listOfHistoricalYears[2]
         label4.text = listOfHistoricalYears[3]
     }
+    
+    @IBAction func moveText(_ sender: UIButton) {
+    //Need to fix force unwrapping here
+        
+        var tempText = ""
+        if (sender === downButtonTop) {
+            tempText = label1.text!
+            label1.text = label2.text
+            label2.text = tempText
+        }
+        
+        if (sender === downButtonMid) {
+            tempText = label2.text!
+            label2.text = label3.text
+            label3.text = tempText
+        }
+        
+        if (sender === downButtonBottom) {
+            tempText = label3.text!
+            label3.text = label4.text
+            label4.text = tempText
+        }
+        
+        if (sender === upButtonBottom) {
+            tempText = label4.text!
+            label4.text = label3.text
+            label3.text = tempText
+        }
+        
+        if (sender === upButtonMid) {
+            tempText = label3.text!
+            label3.text = label2.text
+            label2.text = tempText
+        }
+        
+        if (sender === upButtonTop) {
+            tempText = label2.text!
+            label2.text = label1.text
+            label1.text = tempText
+        }
+    
+    }
+    
+    
 
     var listOfHistoricalEvents: [String] =
     ["Rio Olympics - 2016",
@@ -82,6 +128,8 @@ class ViewController: UIViewController {
      "2016",
      "2017",
      ]
+    
+    
 
 }
 

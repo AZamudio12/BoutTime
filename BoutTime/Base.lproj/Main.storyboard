@@ -80,6 +80,9 @@
                                 </constraints>
                                 <state key="normal" image="down_full"/>
                                 <state key="highlighted" image="down_full_selected"/>
+                                <connections>
+                                    <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YpG-Kq-CzV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ys-2T-ktG">
                                 <rect key="frame" x="310" y="419" width="39" height="116"/>
@@ -90,6 +93,9 @@
                                 <state key="normal" image="up_full"/>
                                 <state key="selected" image="up_full_selected"/>
                                 <state key="highlighted" image="up_full_selected"/>
+                                <connections>
+                                    <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EgG-00-2ja"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAQ-F1-nGp">
                                 <rect key="frame" x="310" y="214" width="39" height="61"/>
@@ -99,6 +105,9 @@
                                 </constraints>
                                 <state key="normal" image="up_half"/>
                                 <state key="highlighted" image="up_half_selected"/>
+                                <connections>
+                                    <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fD3-ud-yrv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N09-B2-Nc8">
                                 <rect key="frame" x="310" y="159" width="39" height="61"/>
@@ -109,6 +118,9 @@
                                 <state key="normal" image="down_half"/>
                                 <state key="selected" image="down_half_selected"/>
                                 <state key="highlighted" image="down_half_selected"/>
+                                <connections>
+                                    <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4jm-r2-7EA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kj0-xN-Abd">
                                 <rect key="frame" x="310" y="289" width="39" height="61"/>
@@ -119,6 +131,9 @@
                                 <state key="normal" image="down_half"/>
                                 <state key="selected" image="down_half_selected"/>
                                 <state key="highlighted" image="down_half_selected"/>
+                                <connections>
+                                    <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="liu-mJ-WEn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4h-Tj-ekY">
                                 <rect key="frame" x="310" y="344" width="39" height="61"/>
@@ -129,6 +144,9 @@
                                 <state key="normal" image="up_half"/>
                                 <state key="selected" image="up_half_selected"/>
                                 <state key="highlighted" image="up_half_selected"/>
+                                <connections>
+                                    <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="woS-x5-Cyd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUh-x7-b17">
                                 <rect key="frame" x="116" y="626" width="143" height="21"/>
