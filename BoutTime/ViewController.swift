@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var upButtonTop: UIButton!
     
     @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var shakeLabel: UILabel!
+    
     var indexOfSelectedQuestion: Int = 0
     var randomNumArray = [Int]()
     
@@ -35,6 +37,18 @@ class ViewController: UIViewController {
         displayContent()
     }
 
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            shakeLabel.text = "Tap events to learn more"
+            print("\(checkEventsOrderedCorrectly())")
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,7 +140,7 @@ class ViewController: UIViewController {
     
     func checkEventsOrderedCorrectly() -> Bool {
         //if events are ordered correctly return true
-        if (label1.text < label2.text && label2.text < label3.text && label3.text < label4.text) {
+        if (label1.text! < label2.text! && label2.text! < label3.text! && label3.text! < label4.text!) {
             return true
         } else {
             return false
