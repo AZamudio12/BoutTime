@@ -79,6 +79,7 @@
                                     <constraint firstAttribute="width" constant="39" id="tdU-Sx-Pmb"/>
                                 </constraints>
                                 <state key="normal" image="down_full"/>
+                                <state key="highlighted" image="down_full_selected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ys-2T-ktG">
                                 <rect key="frame" x="310" y="419" width="39" height="116"/>
@@ -87,6 +88,8 @@
                                     <constraint firstAttribute="height" constant="116" id="y9B-HU-J4r"/>
                                 </constraints>
                                 <state key="normal" image="up_full"/>
+                                <state key="selected" image="up_full_selected"/>
+                                <state key="highlighted" image="up_full_selected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAQ-F1-nGp">
                                 <rect key="frame" x="310" y="214" width="39" height="61"/>
@@ -95,6 +98,7 @@
                                     <constraint firstAttribute="height" constant="61" id="oGa-8g-Ski"/>
                                 </constraints>
                                 <state key="normal" image="up_half"/>
+                                <state key="highlighted" image="up_half_selected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N09-B2-Nc8">
                                 <rect key="frame" x="310" y="159" width="39" height="61"/>
@@ -103,6 +107,8 @@
                                     <constraint firstAttribute="height" constant="61" id="UXR-3P-f3Y"/>
                                 </constraints>
                                 <state key="normal" image="down_half"/>
+                                <state key="selected" image="down_half_selected"/>
+                                <state key="highlighted" image="down_half_selected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kj0-xN-Abd">
                                 <rect key="frame" x="310" y="289" width="39" height="61"/>
@@ -111,6 +117,8 @@
                                     <constraint firstAttribute="width" constant="39" id="hZ5-y2-Awe"/>
                                 </constraints>
                                 <state key="normal" image="down_half"/>
+                                <state key="selected" image="down_half_selected"/>
+                                <state key="highlighted" image="down_half_selected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4h-Tj-ekY">
                                 <rect key="frame" x="310" y="344" width="39" height="61"/>
@@ -119,6 +127,8 @@
                                     <constraint firstAttribute="width" constant="39" id="7As-Vc-0YW"/>
                                 </constraints>
                                 <state key="normal" image="up_half"/>
+                                <state key="selected" image="up_half_selected"/>
+                                <state key="highlighted" image="up_half_selected"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUh-x7-b17">
                                 <rect key="frame" x="116" y="626" width="143" height="21"/>
@@ -162,16 +172,32 @@
                             <constraint firstItem="dUh-x7-b17" firstAttribute="top" secondItem="G1C-GK-ArA" secondAttribute="bottom" constant="8" id="xFs-Gr-3NH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="downButtonBottom" destination="kj0-xN-Abd" id="DEk-ij-nRp"/>
+                        <outlet property="downButtonMid" destination="N09-B2-Nc8" id="BEU-pd-qDN"/>
+                        <outlet property="downButtonTop" destination="bNY-Qe-Gg3" id="3df-no-tc5"/>
+                        <outlet property="label1" destination="QR9-2z-clp" id="xlp-Dy-0qF"/>
+                        <outlet property="label2" destination="3ja-rQ-72W" id="e2O-Px-bWJ"/>
+                        <outlet property="label3" destination="sFv-oX-xnK" id="kqA-MS-adC"/>
+                        <outlet property="label4" destination="9kt-Lx-WLH" id="M2r-7h-4jB"/>
+                        <outlet property="upButtonBottom" destination="7ys-2T-ktG" id="8VL-9d-Xt2"/>
+                        <outlet property="upButtonMid" destination="a4h-Tj-ekY" id="TH7-Fl-Wkr"/>
+                        <outlet property="upButtonTop" destination="rAQ-F1-nGp" id="RAR-XQ-XgA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="135.38230884557723"/>
+            <point key="canvasLocation" x="-455.19999999999999" y="-118.29085457271366"/>
         </scene>
     </scenes>
     <resources>
         <image name="down_full" width="158" height="457"/>
+        <image name="down_full_selected" width="158" height="457"/>
         <image name="down_half" width="158" height="229"/>
+        <image name="down_half_selected" width="158" height="229"/>
         <image name="up_full" width="158" height="457"/>
+        <image name="up_full_selected" width="158" height="457"/>
         <image name="up_half" width="158" height="229"/>
+        <image name="up_half_selected" width="158" height="229"/>
     </resources>
 </document>
