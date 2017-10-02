@@ -23,11 +23,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var shakeLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     
+    @IBOutlet weak var nextRoundSuccessBtn: UIButton!
+    @IBOutlet weak var nextRoundFailBtn: UIButton!
     
     var indexOfSelectedQuestion: Int = 0
     var randomNumArray = [Int]()
     
-    let rounds = 6
+    let numOfRounds = 6
+    var roundsPlayed = 0
     let contentPerRound = 4
     
     var contentForRoundArray = [String]()
@@ -50,6 +53,11 @@ class ViewController: UIViewController {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             shakeLabel.text = "Tap events to learn more"
+            if checkEventsOrderedCorrectly() == true {
+                nextRoundSuccessBtn.isHidden = false
+            } else {
+                nextRoundFailBtn.isHidden = false
+            }
             print("\(checkEventsOrderedCorrectly())")
         }
     }
@@ -64,7 +72,15 @@ class ViewController: UIViewController {
         counter -= 1
         
         if counter < 0 {
+            shakeLabel.text = "Tap events to learn more"
+            if checkEventsOrderedCorrectly() == true {
+                nextRoundSuccessBtn.isHidden = false
+            } else {
+                nextRoundFailBtn.isHidden = false
+            }
             timer.invalidate()
+            
+            print("\(checkEventsOrderedCorrectly())")
             
         } else {
             if counter < 10 {
@@ -103,7 +119,8 @@ class ViewController: UIViewController {
         let randomNumber3 = randomNumberFunction()
         let randomNumber4 = randomNumberFunction()
 
-
+        nextRoundFailBtn.isHidden = true
+        nextRoundSuccessBtn.isHidden = true
 
         
         print("\(randomNumber1)")
@@ -166,6 +183,8 @@ class ViewController: UIViewController {
     
     func checkEventsOrderedCorrectly() -> Bool {
         //if events are ordered correctly return true
+        roundsPlayed += 1
+        
         if (label1.text! < label2.text! && label2.text! < label3.text! && label3.text! < label4.text!) {
             return true
         } else {
@@ -174,6 +193,16 @@ class ViewController: UIViewController {
         
     }
     
+    func nextRound() {
+        if roundsPlayed == numOfRounds {
+            print("numRounds")
+        }
+        
+    }
+    
+    func displayAnswers() {
+        
+    }
 
     var listOfHistoricalEvents: [String] =
     ["Rio Olympics - 2016",
