@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextRoundFailBtn: UIButton!
     @IBOutlet weak var finalScoreLabel: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
+    @IBOutlet weak var playAgainBtn: UIButton!
     
     var indexOfSelectedQuestion: Int = 0
     var randomNumArray = [Int]()
@@ -34,11 +35,12 @@ class ViewController: UIViewController {
     let numOfRounds = 6
     var roundsPlayed = 0
     let contentPerRound = 4
+    var correctRound = 0 
     
     var contentForRoundArray = [String]()
     
     var timer = Timer()
-    var counter = 5
+    var counter = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
             } else {
                 nextRoundFailBtn.isHidden = false
             }
-            print("\(checkEventsOrderedCorrectly())")
+            displayScore()
         }
     }
     
@@ -82,7 +84,7 @@ class ViewController: UIViewController {
             }
             timer.invalidate()
             
-            print("\(checkEventsOrderedCorrectly())")
+            displayScore()
             
         } else {
             if counter < 10 {
@@ -121,8 +123,24 @@ class ViewController: UIViewController {
         let randomNumber3 = randomNumberFunction()
         let randomNumber4 = randomNumberFunction()
 
+        label1.isHidden = false
+        label2.isHidden = false
+        label3.isHidden = false
+        label4.isHidden = false
+        downButtonTop.isHidden = false
+        downButtonMid.isHidden = false
+        downButtonBottom.isHidden = false
+        upButtonBottom.isHidden = false
+        upButtonMid.isHidden = false
+        upButtonTop.isHidden = false
+        shakeLabel.isHidden = false
+        timerLabel.isHidden = false
+        
         nextRoundFailBtn.isHidden = true
         nextRoundSuccessBtn.isHidden = true
+        yourScoreLabel.isHidden = true
+        finalScoreLabel.isHidden = true
+        playAgainBtn.isHidden = true
 
         
         print("\(randomNumber1)")
@@ -134,6 +152,7 @@ class ViewController: UIViewController {
         
         print("\(randomNumArray)")
 
+        shakeLabel.text = "Shake to Complete"
         
         label1.text = listOfHistoricalYears[randomNumber1]
         label2.text = listOfHistoricalYears[randomNumber2]
@@ -188,6 +207,7 @@ class ViewController: UIViewController {
         roundsPlayed += 1
         
         if (label1.text! < label2.text! && label2.text! < label3.text! && label3.text! < label4.text!) {
+            correctRound += 1
             return true
         } else {
             return false
@@ -198,14 +218,43 @@ class ViewController: UIViewController {
     func nextRound() {
         if roundsPlayed == numOfRounds {
             print("numRounds")
+            displayScore()
         }
         
     }
     
-    func displayAnswers() {
+    func displayScore() {
+        label1.isHidden = true
+        label2.isHidden = true
+        label3.isHidden = true
+        label4.isHidden = true
+        downButtonTop.isHidden = true
+        downButtonMid.isHidden = true
+        downButtonBottom.isHidden = true
+        upButtonBottom.isHidden = true
+        upButtonMid.isHidden = true
+        upButtonTop.isHidden = true
+        shakeLabel.isHidden = true
+        timerLabel.isHidden = true
+        nextRoundSuccessBtn.isHidden = true
+        nextRoundFailBtn.isHidden = true
         
+        finalScoreLabel.text = " \(correctRound)/\(numOfRounds)"
+        finalScoreLabel.isHidden = false
+        playAgainBtn.isHidden = false
+        yourScoreLabel.isHidden = false
     }
 
+    @IBAction func playAgain() {
+        playAgainBtn.isHidden = true
+        yourScoreLabel.isHidden = true
+        finalScoreLabel.isHidden = true
+        
+        randomNumArray.removeAll()
+        displayContent()
+    }
+    
+    
     var listOfHistoricalEvents: [String] =
     ["Rio Olympics - 2016",
      "Brazil FIFA World Cup - 2014",
