@@ -199,6 +199,7 @@
                         <outlet property="label3" destination="sFv-oX-xnK" id="kqA-MS-adC"/>
                         <outlet property="label4" destination="9kt-Lx-WLH" id="M2r-7h-4jB"/>
                         <outlet property="shakeLabel" destination="dUh-x7-b17" id="coC-Dq-nAm"/>
+                        <outlet property="timerLabel" destination="G1C-GK-ArA" id="SDx-XZ-umV"/>
                         <outlet property="upButtonBottom" destination="7ys-2T-ktG" id="8VL-9d-Xt2"/>
                         <outlet property="upButtonMid" destination="a4h-Tj-ekY" id="TH7-Fl-Wkr"/>
                         <outlet property="upButtonTop" destination="rAQ-F1-nGp" id="RAR-XQ-XgA"/>

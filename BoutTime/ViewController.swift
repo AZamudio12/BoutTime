@@ -13,15 +13,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var downButtonTop: UIButton!
     @IBOutlet weak var downButtonMid: UIButton!
     @IBOutlet weak var downButtonBottom: UIButton!
     @IBOutlet weak var upButtonBottom: UIButton!
     @IBOutlet weak var upButtonMid: UIButton!
     @IBOutlet weak var upButtonTop: UIButton!
-    
-    @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var shakeLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    
     
     var indexOfSelectedQuestion: Int = 0
     var randomNumArray = [Int]()
@@ -31,10 +32,15 @@ class ViewController: UIViewController {
     
     var contentForRoundArray = [String]()
     
+    var timer = Timer()
+    var counter = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         displayContent()
+        timerLabel.text = "1:00"
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ViewController.updateCounter), userInfo: nil, repeats: true)
     }
 
     override func becomeFirstResponder() -> Bool {
@@ -53,6 +59,26 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func updateCounter() {
+        counter -= 1
+        
+        if counter < 0 {
+            timer.invalidate()
+            
+        } else {
+            if counter < 10 {
+                timerLabel.text = "0:0\(counter)"
+            } else {
+                timerLabel.text = "0:\(counter)"
+                
+            }
+            
+        }
+        
+        
+    }
+
     
     func randomNumberFunction() -> Int {
         
