@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var nextRoundSuccessBtn: UIButton!
     @IBOutlet weak var nextRoundFailBtn: UIButton!
+    @IBOutlet weak var finalScoreLabel: UILabel!
+    @IBOutlet weak var yourScoreLabel: UILabel!
     
     var indexOfSelectedQuestion: Int = 0
     var randomNumArray = [Int]()
