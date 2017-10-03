@@ -79,6 +79,7 @@
                                     <constraint firstAttribute="width" constant="39" id="tdU-Sx-Pmb"/>
                                 </constraints>
                                 <state key="normal" image="down_full"/>
+                                <state key="disabled" image="down_full"/>
                                 <state key="highlighted" image="down_full_selected"/>
                                 <connections>
                                     <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YpG-Kq-CzV"/>
@@ -91,6 +92,7 @@
                                     <constraint firstAttribute="height" constant="116" id="y9B-HU-J4r"/>
                                 </constraints>
                                 <state key="normal" image="up_full"/>
+                                <state key="disabled" image="up_full"/>
                                 <state key="selected" image="up_full_selected"/>
                                 <state key="highlighted" image="up_full_selected"/>
                                 <connections>
@@ -104,6 +106,7 @@
                                     <constraint firstAttribute="height" constant="61" id="oGa-8g-Ski"/>
                                 </constraints>
                                 <state key="normal" image="up_half"/>
+                                <state key="disabled" image="up_half"/>
                                 <state key="highlighted" image="up_half_selected"/>
                                 <connections>
                                     <action selector="moveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fD3-ud-yrv"/>
@@ -116,6 +119,7 @@
                                     <constraint firstAttribute="height" constant="61" id="UXR-3P-f3Y"/>
                                 </constraints>
                                 <state key="normal" image="down_half"/>
+                                <state key="disabled" image="down_half"/>
                                 <state key="selected" image="down_half_selected"/>
                                 <state key="highlighted" image="down_half_selected"/>
                                 <connections>
@@ -129,6 +133,7 @@
                                     <constraint firstAttribute="width" constant="39" id="hZ5-y2-Awe"/>
                                 </constraints>
                                 <state key="normal" image="down_half"/>
+                                <state key="disabled" image="down_half"/>
                                 <state key="selected" image="down_half_selected"/>
                                 <state key="highlighted" image="down_half_selected"/>
                                 <connections>
@@ -142,6 +147,7 @@
                                     <constraint firstAttribute="width" constant="39" id="7As-Vc-0YW"/>
                                 </constraints>
                                 <state key="normal" image="up_half"/>
+                                <state key="disabled" image="up_half"/>
                                 <state key="selected" image="up_half_selected"/>
                                 <state key="highlighted" image="up_half_selected"/>
                                 <connections>
@@ -167,6 +173,9 @@
                                     <constraint firstAttribute="width" constant="158" id="vuu-hk-WaK"/>
                                 </constraints>
                                 <state key="normal" image="next_round_fail"/>
+                                <connections>
+                                    <action selector="nextRoundButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="hJZ-YB-jg0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjJ-0h-PgW">
                                 <rect key="frame" x="108" y="559" width="158" height="42"/>
@@ -175,6 +184,9 @@
                                     <constraint firstAttribute="height" constant="42" id="lPA-IN-woM"/>
                                 </constraints>
                                 <state key="normal" image="next_round_success"/>
+                                <connections>
+                                    <action selector="nextRoundButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="22j-i8-DYG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTQ-4q-kEF">
                                 <rect key="frame" x="122" y="368" width="131" height="43"/>

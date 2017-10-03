@@ -42,12 +42,18 @@ class ViewController: UIViewController {
     var timer = Timer()
     var counter = 10
     
+    
+    var label1Dictionary = [String : String]()
+    var label2Dictionary = [String : String]()
+    
+    var label3Dictionary = [String : String]()
+    var label4Dictionary = [String : String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         displayContent()
-        timerLabel.text = "1:00"
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ViewController.updateCounter), userInfo: nil, repeats: true)
+        
     }
 
     override func becomeFirstResponder() -> Bool {
@@ -62,7 +68,15 @@ class ViewController: UIViewController {
             } else {
                 nextRoundFailBtn.isHidden = false
             }
-            displayScore()
+            //CALL NEXT ROUND HERE
+            timer.invalidate()
+
+            downButtonTop.isEnabled = false
+            downButtonMid.isEnabled = false
+            downButtonBottom.isEnabled = false
+            upButtonBottom.isEnabled = false
+            upButtonMid.isEnabled = false
+            upButtonTop.isEnabled = false
         }
     }
     
@@ -84,7 +98,12 @@ class ViewController: UIViewController {
             }
             timer.invalidate()
             
-            displayScore()
+            downButtonTop.isEnabled = false
+            downButtonMid.isEnabled = false
+            downButtonBottom.isEnabled = false
+            upButtonBottom.isEnabled = false
+            upButtonMid.isEnabled = false
+            upButtonTop.isEnabled = false
             
         } else {
             if counter < 10 {
@@ -102,7 +121,7 @@ class ViewController: UIViewController {
     
     func randomNumberFunction() -> Int {
         
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: listOfHistoricalYears.count)
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
         
         //setup a random Num array to keep track of previous generated random numbers if they have not already been selected then the question is displaed
         //if they have been selected then the method is called again.
@@ -141,8 +160,17 @@ class ViewController: UIViewController {
         yourScoreLabel.isHidden = true
         finalScoreLabel.isHidden = true
         playAgainBtn.isHidden = true
-
         
+        downButtonTop.isEnabled = true
+        downButtonMid.isEnabled = true
+        downButtonBottom.isEnabled = true
+        upButtonBottom.isEnabled = true
+        upButtonMid.isEnabled = true
+        upButtonTop.isEnabled = true
+
+        counter = 10
+        timerLabel.text = "1:00"
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ViewController.updateCounter), userInfo: nil, repeats: true)
         print("\(randomNumber1)")
         print("\(randomNumber2)")
 
@@ -154,59 +182,100 @@ class ViewController: UIViewController {
 
         shakeLabel.text = "Shake to Complete"
         
-        label1.text = listOfHistoricalYears[randomNumber1]
-        label2.text = listOfHistoricalYears[randomNumber2]
-        label3.text = listOfHistoricalYears[randomNumber3]
-        label4.text = listOfHistoricalYears[randomNumber4]
+        label1Dictionary = events[randomNumber1]
+        label2Dictionary = events[randomNumber2]
+
+        label3Dictionary = events[randomNumber3]
+        label4Dictionary = events[randomNumber4]
+
+        
+        
+        
+        label1.text = label1Dictionary["Event"]
+        label2.text = label2Dictionary["Event"]
+        label3.text = label3Dictionary["Event"]
+        label4.text = label4Dictionary["Event"]
     }
     
     @IBAction func moveText(_ sender: UIButton) {
     //Need to fix force unwrapping here
         
         var tempText = ""
+        var tempDictionary = [String : String]()
         if (sender === downButtonTop) {
             tempText = label1.text!
             label1.text = label2.text
             label2.text = tempText
+            
+            tempDictionary = label1Dictionary
+            label1Dictionary = label2Dictionary
+            label2Dictionary = tempDictionary
+            
         }
         
         if (sender === downButtonMid) {
             tempText = label2.text!
             label2.text = label3.text
             label3.text = tempText
+            
+            tempDictionary = label2Dictionary
+            label2Dictionary = label3Dictionary
+            label3Dictionary = tempDictionary
         }
         
         if (sender === downButtonBottom) {
             tempText = label3.text!
             label3.text = label4.text
             label4.text = tempText
+            
+            tempDictionary = label3Dictionary
+            label3Dictionary = label4Dictionary
+            label4Dictionary = tempDictionary
         }
         
         if (sender === upButtonBottom) {
             tempText = label4.text!
             label4.text = label3.text
             label3.text = tempText
+            
+            tempDictionary = label4Dictionary
+            label4Dictionary = label3Dictionary
+            label3Dictionary = tempDictionary
         }
         
         if (sender === upButtonMid) {
             tempText = label3.text!
             label3.text = label2.text
             label2.text = tempText
+            
+            tempDictionary = label3Dictionary
+            label3Dictionary = label2Dictionary
+            label2Dictionary = tempDictionary
+            
         }
         
         if (sender === upButtonTop) {
             tempText = label2.text!
             label2.text = label1.text
             label1.text = tempText
+            
+            tempDictionary = label2Dictionary
+            label2Dictionary = label1Dictionary
+            label1Dictionary = tempDictionary
         }
     
     }
+    
+    @IBAction func nextRoundButtonAction() {
+        nextRound()
+    }
+    
     
     func checkEventsOrderedCorrectly() -> Bool {
         //if events are ordered correctly return true
         roundsPlayed += 1
         
-        if (label1.text! < label2.text! && label2.text! < label3.text! && label3.text! < label4.text!) {
+        if (label1Dictionary["Year"]! < label2Dictionary["Year"]! && label2Dictionary["Year"]! < label3Dictionary["Year"]! && label3Dictionary["Year"]! < label4Dictionary["Year"]!) {
             correctRound += 1
             return true
         } else {
@@ -217,8 +286,12 @@ class ViewController: UIViewController {
     
     func nextRound() {
         if roundsPlayed == numOfRounds {
-            print("numRounds")
             displayScore()
+            roundsPlayed = 0
+            correctRound = 0
+        } else {
+            randomNumArray.removeAll()
+            displayContent()
         }
         
     }
@@ -269,6 +342,21 @@ class ViewController: UIViewController {
      "Cricket World Cup - 2015"
      
     ]
+    
+    let events: [[String : String]] = [
+        ["Event": "Rio Olympics 16", "Year": "2016"],
+        ["Event": "Brazil FIFA World Cup 14", "Year": "2014"],
+        ["Event": "Giants Win World Series 17", "Year": "2017"],
+        ["Event": "Cricket World Cup 15", "Year": "2015"],
+        ["Event": "Oracle Team Wins America's Cup 13", "Year": "2013"],
+        ["Event": "Dallas Mavericks Win 1st NBA Title 11", "Year": "2011"],
+        ["Event": "South Africa World Cup 10", "Year": "2010"],
+        ["Event": "NY Yankees Win World 27th World Series 9", "Year": "2009"],
+        ["Event": "Beijing Summer Olympics 8", "Year": "2008"]
+            
+        
+    ]
+    
     
     let listOfHistoricalYears =
     ["1992",
